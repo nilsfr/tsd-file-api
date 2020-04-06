@@ -21,8 +21,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.exc import OperationalError, IntegrityError, StatementError
 
 # pylint: disable=relative-import
-from squril import SqliteQueryGenerator, PostgresQueryGenerator
-from utils import check_filename, IllegalFilenameException
+from tsdfileapi.squril import SqliteQueryGenerator, PostgresQueryGenerator
+from tsdfileapi.utils import check_filename, IllegalFilenameException
 
 
 def sqlite_init(path, name='api-data.db', builtin=False):

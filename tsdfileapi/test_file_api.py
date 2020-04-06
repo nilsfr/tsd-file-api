@@ -88,14 +88,14 @@ import pretty_bad_protocol._parsers
 pretty_bad_protocol._parsers.Verify.TRUST_LEVELS["ENCRYPTION_COMPLIANCE_MODE"] = 23
 
 # pylint: disable=relative-import
-from auth import process_access_token
-from tokens import gen_test_tokens, get_test_token_for_p12, gen_test_token_for_user
-from db import session_scope, sqlite_init, postgres_init, SqliteBackend, \
+from tsdfileapi.auth import process_access_token
+from tsdfileapi.tokens import gen_test_tokens, get_test_token_for_p12, gen_test_token_for_user
+from tsdfileapi.db import session_scope, sqlite_init, postgres_init, SqliteBackend, \
                sqlite_session, PostgresBackend, postgres_session
-from resumables import SerialResumable
-from utils import sns_dir, md5sum, IllegalFilenameException
-from pgp import _import_keys
-from squril import SqliteQueryGenerator, PostgresQueryGenerator
+from tsdfileapi.resumables import SerialResumable
+from tsdfileapi.utils import sns_dir, md5sum, IllegalFilenameException
+from tsdfileapi.pgp import _import_keys
+from tsdfileapi.squril import SqliteQueryGenerator, PostgresQueryGenerator
 
 
 def project_import_dir(config, tenant=None, backend=None, tenant_pattern=None):

@@ -45,15 +45,15 @@ from tornado.options import parse_command_line, define, options
 from tornado.web import Application, RequestHandler, stream_request_body, \
                         HTTPError, MissingArgumentError
 
-from auth import process_access_token
-from utils import call_request_hook, sns_dir, \
+from tsdfileapi.auth import process_access_token
+from tsdfileapi.utils import call_request_hook, sns_dir, \
                   check_filename, _IS_VALID_UUID, \
                   md5sum, tenant_from_url, create_cluster_dir_if_not_exists, \
                   move_data_to_folder
-from db import sqlite_init, SqliteBackend, postgres_init, PostgresBackend
-from resumables import SerialResumable
-from pgp import _import_keys
-from rmq import PikaClient
+from tsdfileapi.db import sqlite_init, SqliteBackend, postgres_init, PostgresBackend
+from tsdfileapi.resumables import SerialResumable
+from tsdfileapi.pgp import _import_keys
+from tsdfileapi.rmq import PikaClient
 
 
 _RW______ = stat.S_IREAD | stat.S_IWRITE
@@ -73,8 +73,8 @@ def set_config():
     except IndexError as e:
         print(colored('Missing config file, running with default setup', 'yellow'))
         print(colored('WARNING: do _not_ do this in production', 'red'))
-        from defaults import _config
-        from tokens import tkn
+        from tsdfileapi.defaults import _config
+        from tsdfileapi.tokens import tkn
         for k,v in _config.items():
             print(colored(f'{k}:', 'yellow'), colored(f'{v}', 'magenta'))
         print(colored('JWT token for dev purposes:', 'cyan'))

@@ -12,3 +12,5 @@ dist/*
 tsdfileapi/data/large-file
 src/
 definitions
+venv/
+venv-*/
