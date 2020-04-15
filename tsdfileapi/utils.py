@@ -50,8 +50,7 @@ def check_filename(filename, disallowed_start_chars=[]):
 
 
 def create_cluster_dir_if_not_exists(path, tenant, tenant_string_pattern):
-    # TODO: need to move the /file-import to config
-    base = path.replace(tenant_string_pattern, tenant).replace('/file-import', '')
+    base = os.path.abspath(os.path.join(path, os.pardir))
     target = path.replace(tenant_string_pattern, tenant)
     if os.path.lexists(base):
         if not os.path.lexists(target):

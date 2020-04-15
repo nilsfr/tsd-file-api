@@ -137,7 +137,7 @@ class TestFileApi(unittest.TestCase):
         cls.test_project = cls.config['test_project']
         cls.maintenance_url = f"http://localhost:{str(cls.config['port'])}/v1/admin"
         cls.base_url = f"http://localhost:{str(cls.config['port'])}/v1/{cls.test_project}"
-        cls.data_folder = cls.config['data_folder']
+        cls.data_folder = os.path.expanduser(cls.config['data_folder'])
         cls.example_csv = os.path.normpath(cls.data_folder + '/example.csv')
         cls.an_empty_file = os.path.normpath(cls.data_folder + '/an-empty-file')
         cls.example_codebook = json.loads(
@@ -239,7 +239,7 @@ class TestFileApi(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         uploaded_files = os.listdir(cls.uploads_folder)
-        test_files = os.listdir(cls.config['data_folder'])
+        test_files = os.listdir(cls.data_folder)
         today = datetime.fromtimestamp(time.time()).isoformat()[:10]
         file_list = ['streamed-example.csv', 'uploaded-example.csv',
                      'uploaded-example-2.csv', 'uploaded-example-3.csv',
